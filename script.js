@@ -5,9 +5,10 @@ const flash = document.getElementById("flash");
 const mob = document.getElementById("mob");
 const gameOverText = document.getElementById("gameover");
 const startImage = document.getElementById("startImage");
+const phone = document.getElementById("phone");
+const voice = document.getElementById("voice");
 
 let currentRoom = "";    
-let visitedRoom = false;   
 let mobRoom = "";
 let mobVisible = false;
 let reacting = false;
@@ -32,16 +33,36 @@ startBtn.onclick = () => {
       startImage.style.display = "none";
       game.style.background = "url('base.jpeg') center/cover no-repeat";
 
-      spawnMob();
-      gameLoop();
+      mostrarTelefone();
     }, 1000);
   }, 2000);
 };
+function mostrarTelefone() {
+  phone.style.display = "block";
+  setTimeout(() => phone.style.opacity = 1, 100);
+
+  phone.onclick = () => {
+    phone.onclick = null;
+    voice.currentTime = 0;
+    voice.play();
+
+    phone.style.transform = "scale(0.9)";
+    setTimeout(() => phone.style.transform = "scale(1)", 150);
+
+    voice.onended = () => {
+      phone.style.opacity = 0;
+      setTimeout(() => {
+        phone.style.display = "none";
+        spawnMob();
+        gameLoop();
+      }, 800);
+    };
+  };
+}
 
 function changeRoom(room) {
   if (gameOver) return;
   currentRoom = room;
-  visitedRoom = true; 
   game.style.background = `url('${roomBackgrounds[room]}') center/cover no-repeat`;
 }
 
@@ -95,7 +116,6 @@ function triggerGameOver() {
   mob.style.height = "100%";
   mob.style.left = "0";
   mob.style.background = "url('medo.jpg') center/contain no-repeat";
-  mob.style.backgroundColor = "white";
   gameOverText.style.display = "flex";
 }
 
@@ -108,27 +128,24 @@ document.addEventListener("keydown", (e) => {
   if (gameOver) return;
   const key = e.key.toLowerCase();
 
-  switch(key) {
+  switch (key) {
     case "v":
-      if (!visitedRoom && currentRoom === "") changeRoom("esquerda");
+      changeRoom("esquerda");
       break;
     case "b":
-      if (!visitedRoom && currentRoom === "") changeRoom("meio");
+      changeRoom("meio");
       break;
     case "c":
-      if (!visitedRoom && currentRoom === "") changeRoom("direita");
+      changeRoom("direita");
       break;
     case "z":
-      if (visitedRoom) usarFlash();
+      usarFlash();
       break;
     case "x":
-      if (visitedRoom) {
-        currentRoom = "";
-        visitedRoom = false;
-        game.style.background = "url('base.jpeg') center/cover no-repeat";
-        mob.style.display = "none";
-        reacting = false;
-      }
+      currentRoom = "";
+      game.style.background = "url('base.jpeg') center/cover no-repeat";
+      mob.style.display = "none";
+      reacting = false;
       break;
   }
 });

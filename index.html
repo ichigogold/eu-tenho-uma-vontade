@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruizito estava certo?</title>
+<title>Femboy é vida</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -96,6 +96,7 @@
     background: black;
     color: red;
   }
+
   #startImage {
     position: absolute;
     inset: 0;
@@ -106,6 +107,20 @@
     transition: opacity 1s ease;
     display: none;
     z-index: 10;
+  }
+  #phone {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 90px;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    cursor: pointer;
+    z-index: 20;
+  }
+  #phone:hover {
+    transform: scale(1.05);
   }
 </style>
 </head>
@@ -128,6 +143,9 @@
 
   <div id="game">
     <img id="startImage" src="super.jpg" alt="Início do jogo">
+
+    <img id="phone" src="tlf.jpg" alt="Telefone">
+    <audio id="voice" src="o jão n esquece de colocar o mp3 aq"></audio>
 
     <div id="flash"></div>
     <div id="mob"></div>
