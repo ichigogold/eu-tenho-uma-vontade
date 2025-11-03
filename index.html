@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruizito estava certo?</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    background: black;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  #menu {
+    position: absolute;
+    inset: 0;
+    background: url('k.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    text-align: center;
+  }
+
+  #menu::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 0;
+  }
+
+  #menu * { position: relative; z-index: 1; }
+
+  #menu h1 {
+    font-size: 42px;
+    color: red;
+    text-shadow: 2px 2px 5px black;
+  }
+
+  #menu p {
+    font-size: 18px;
+    line-height: 1.5;
+    text-shadow: 2px 2px 5px black;
+  }
+
+  #menu button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  #game {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: relative;
+    background: #010101;
+    overflow: hidden;
+  }
+
+  #flash {
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  #mob {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 300px;
+    left: calc(50% - 100px);
+    background: url('medo.jpg') center/contain no-repeat;
+    display: none;
+  }
+
+  #gameover {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    background: black;
+    color: red;
+  }
+  #startImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+    display: none;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+  <div id="menu">
+    <h1>6 noites com o rauzito</h1>
+    <p>
+      Mecânicas do jogo:<br>
+      - <b>V</b> → Ir para o cômodo da esquerda<br>
+      - <b>B</b> → Ir para o cômodo do meio<br>
+      - <b>C</b> → Ir para o cômodo da direita<br>
+      - <b>Z</b> → Usar flash <br>
+      <br>
+      Um fato sobre os donos desse jogo: A pessoa XXX já namorou uma pessoa de 10 anos<br>
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH
+    </p>
+    <button id="startBtn">Começar</button>
+  </div>
+
+  <div id="game">
+    <img id="startImage" src="super.jpg" alt="Início do jogo">
+
+    <div id="flash"></div>
+    <div id="mob"></div>
+    <div id="gameover">GAME OVER</div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
