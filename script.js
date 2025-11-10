@@ -15,8 +15,8 @@ let reacting = false;
 let gameOver = false;
 
 const roomBackgrounds = {
-  esquerda: "janela.jpg",
-  meio: "porta2.jpeg",
+  esquerda: "janela noite.jpeg",
+  meio: "meioescuro.jpeg",
   direita: "q.jpg"
 };
 
@@ -31,7 +31,7 @@ startBtn.onclick = () => {
     startImage.style.opacity = 0;
     setTimeout(() => {
       startImage.style.display = "none";
-      game.style.background = "url('base.jpeg') center/cover no-repeat";
+      game.style.background = "url('basE.jpeg') center/cover no-repeat";
 
       mostrarTelefone();
     }, 1000);
@@ -115,7 +115,7 @@ function triggerGameOver() {
   mob.style.width = "100%";
   mob.style.height = "100%";
   mob.style.left = "0";
-  mob.style.background = "url('medo.jpg') center/contain no-repeat";
+  mob.style.background = "url('inimigo.jpeg') center/contain no-repeat";
   gameOverText.style.display = "flex";
 }
 
@@ -143,7 +143,7 @@ document.addEventListener("keydown", (e) => {
       break;
     case "x":
       currentRoom = "";
-      game.style.background = "url('base.jpeg') center/cover no-repeat";
+      game.style.background = "url('basE.jpeg') center/cover no-repeat";
       mob.style.display = "none";
       reacting = false;
       break;
