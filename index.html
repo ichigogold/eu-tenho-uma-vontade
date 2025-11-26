@@ -86,15 +86,49 @@
     display: none;
   }
 
+  /* TELA DE GAME OVER */
   #gameover {
     position: absolute;
     inset: 0;
     display: none;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
+    flex-direction: column;
     background: black;
+    z-index: 9999;
+  }
+
+  #gameoverImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+  }
+
+  #gameover h1 {
+    position: absolute;
     color: red;
+    font-size: 70px;
+    text-shadow: 4px 4px 10px black;
+  }
+
+  #restartBtn {
+    position: absolute;
+    bottom: 40px;
+    padding: 15px 30px;
+    font-size: 22px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 0 10px black;
+  }
+
+  #restartBtn:hover {
+    background: darkred;
+    transform: scale(1.05);
   }
 
   #startImage {
@@ -108,6 +142,7 @@
     display: none;
     z-index: 10;
   }
+
   #phone {
     position: absolute;
     top: 20px;
@@ -118,9 +153,6 @@
     transition: opacity 0.8s ease;
     cursor: pointer;
     z-index: 20;
-  }
-  #phone:hover {
-    transform: scale(1.05);
   }
 </style>
 </head>
@@ -134,10 +166,7 @@
       - <b>B</b> → Ir para o cômodo do meio<br>
       - <b>C</b> → Ir para o cômodo da direita<br>
       - <b>Z</b> → Usar flash <br>
-      - <b>x</b> → Use o x para voltar para o cômodo inicial<br>
-      <br>
-      Um fato sobre os donos desse jogo: A pessoa XXX já namorou uma pessoa de 10 anos<br>
-      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH
+      - <b>X</b> → Voltar para o cômodo inicial<br>
     </p>
     <button id="startBtn">Começar</button>
   </div>
@@ -150,12 +179,15 @@
 
     <div id="flash"></div>
     <div id="mob"></div>
-    <div id="gameover">GAME OVER</div>
+
+    <!-- TELA DE GAME OVER -->
+    <div id="gameover">
+      <img id="gameoverImage" src="gameover.jpg" alt="Game Over">
+      <h1>GAME OVER</h1>
+      <button id="restartBtn">Reiniciar</button>
+    </div>
   </div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
